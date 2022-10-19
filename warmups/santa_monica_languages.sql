@@ -1,3 +1,6 @@
+-- Use the world database to answer the following question:
+    -- What languages are spoken in Santa Monica?
+
 USE world;
 
 SELECT *
@@ -9,8 +12,7 @@ FROM country;
 SELECT *
 FROM city;
 
-SELECT DISTINCT cl.language
-FROM country c
-JOIN countrylanguage cl ON c.Code = cl.CountryCode
-JOIN city ci ON ci.CountryCode = c.Code
+SELECT DISTINCT cl.Language
+FROM countrylanguage cl 
+JOIN city ci USING(CountryCode)
 WHERE ci.Name = 'Santa Monica';
